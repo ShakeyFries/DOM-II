@@ -15,18 +15,23 @@ navTags.forEach((anchor) => {
         anchor.textContent = 'DONT!';
         console.log(changeNav);
       });
+      //Prevent Default
+      anchor.addEventListener('click',(event) => {
+        event.preventDefault();
+      })
 });
 
 const image = document.querySelectorAll('img');
 // Wheel
 image.forEach((pic) => {
-  image[0].addEventListener('drag', (event) => {
+  image[0].addEventListener('click', (event) => {
     image[0].src = "img/zap-plane.jpg";
+    event.stopPropagation();
   });
   image[0].addEventListener('drop', (event) => {
     image[0].src = "img/fun-bus.jpg";
   });
-  image[1].addEventListener('click', (event) => {
+  image[1].addEventListener('drag', (event) => {
     image[1].src = "img/fire-bus.jpg";
   });
   image[2].addEventListener('dblclick', (event) => {
@@ -50,6 +55,14 @@ title.forEach((words) =>{
 
 const backGround = document.querySelector('body');
 
-backGround.addEventListener('resize', (event) => {
-  backGround.style.color = 'black';
-})
+backGround.addEventListener('scroll', (event) => {
+  backGround.style.color = "black";
+});
+
+const contain = document.querySelector('.intro');
+
+contain.addEventListener('click', (event) => {
+  contain.textContent = "Easter egg here";
+});
+
+
